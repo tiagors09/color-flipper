@@ -1,33 +1,20 @@
 import './App.css'
 import { useState } from 'react'
-
-function getRandomNumber() {
-  return Math.floor(Math.random() * 255)
-}
+import ColorRandomizerButton from './components/ColorRandomizerButton'
+import ColorInfo from './components/ColorInfo'
 
 function App() {
   const [color, setColor] = useState('rgb(255, 255, 255)')
 
   return (
-    <div className="container parent" style={{ backgroundColor: color }}>
+    <div
+      className="centralize-flex occupy-the-whole-screen"
+      style={{ backgroundColor: color }}
+    >
       <div className="child">
-        <div className="color-info">
-          Background color:
-          <div className="color-value" style={{ color: color }}>
-            {color}
-          </div>
-        </div>
-        <div className="container">
-          <button
-            className="button"
-            onClick={() => {
-              setColor(
-                `rgb(${getRandomNumber()}, ${getRandomNumber()}, ${getRandomNumber()})`
-              )
-            }}
-          >
-            Click me
-          </button>
+        <ColorInfo info={color} />
+        <div className="centralize-flex">
+          <ColorRandomizerButton text="Click Me" handler={setColor} />
         </div>
       </div>
     </div>
